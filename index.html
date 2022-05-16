@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <div>
+        <h2>რეპორტები</h2>
+        <button onclick="demandReport(0,'price')">ფასის მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(0,'price')">ფასის დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(0,'price')">ფასის მნიშვნელობის რეპორტი</button>
+        <select id="price-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(1,'comfort')">კომფორტის მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(1,'comfort')">კომფორტის დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(1,'comfort')">კომფორტის მნიშვნელობის რეპორტი</button>
+        <select id="comfort-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(2,'image')">იმიჯი მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(2,'image')">იმიჯი დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(2,'image')">იმიჯი მნიშვნელობის რეპორტი</button>
+        <select id="image-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(3,'durability')">გამძლეობის მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(3,'durability')">გამძლეობის დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(3,'durability')">გამძლეობის მნიშვნელობის რეპორტი</button>
+        <select id="durability-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(4,'design')">დიზაინის მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(4,'design')">დიზაინის დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(4,'design')">დიზაინის მნიშვნელობის რეპორტი</button>
+        <select id="design-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(5,'features')">დამ/ფუნქციების მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(5,'features')">დამ/ფუნქციების დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(5,'features')">დამ/ფუნქციების მნიშვნელობის რეპორტი</button>
+        <select id="features-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="demandReport(6,'economy')">ეკონომიის მოთხოვნის რეპორტი</button>
+        <button onclick="confidenceReport(6,'economy')">ეკონომიის დარწმუნებულობის რეპორტი</button>
+        <button onclick="weightReport(6,'economy')">ეკონომიის მნიშვნელობის რეპორტი</button>
+        <select id="economy-demand">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+        <br>
+        <button onclick="awarenessReport()">ცნობადობის რეპორტი</button>
+        <input style="width:auto" id="car-report" type="text" placeholder="მანქანის დასახელება">
+        <select id="awareness-report">
+            <option>
+                1
+            </option>
+            <option>
+                2
+            </option>
+            <option>
+                3
+            </option>
+            <option>
+                4
+            </option>
+            <option>
+                5
+            </option>
+        </select>
+       <div style="width:1000px">
+        <canvas id="myChart"></canvas>
+
+       </div>
+       <h2>პროდუქტები</h2>
+       <div class="form">
+            <input  min="1" max="5" id="name-input" type="text" placeholder="სახელი">
+            <input  min="1" max="5" id="price-input" type="number" placeholder="ფასი">
+            <input onchange="calculateCosts()" min="1" max="5" id="comfort-input" type="number" value="0" placeholder="კომფორტი">
+            <input onchange="calculateCosts()" min="1" max="5" id="image-input" type="number" value="0"  placeholder="იმიჯი">
+            <input onchange="calculateCosts()" min="1" max="5" id="durability-input" type="number" value="0"  placeholder="გამძლეობა">
+            <input onchange="calculateCosts()" min="1" max="5" id="design-input" type="number" value="0"  placeholder="დიზაინის">
+            <input onchange="calculateCosts()" min="1" max="5" id="features-input" type="number" value="0"  placeholder="ფუნქციები">
+            <input onchange="calculateCosts()" min="1" max="5" id="economy-input" type="number" value="0"  placeholder="ეკონომია">
+            <input onchange="calculateCosts()" min="1" max="1000" id="amount-input" type="number" value="0"  placeholder="რაოდენობა">
+            <p>ხარჯი <span id="costs">0</span></p>
+            <p>ხარჯი სულ <span id="totalCosts">0</span></p>
+
+            <button onclick="addProduct()" id="add-product">პროდუქტის დამატება</button>
+            <button onclick="updateProduct()" id="update-product">პროდუქტის განახლება</button>
+
+       </div>
+       <div style="overflow: auto;" id="products">
+
+       </div>
+    </br>
+       <h2>ცნობადობის მარკეტინგი</h2>
+       <div  class="form">
+            <input min="1" max="5" id="car-name" type="text" placeholder="მანქანის სახელი">
+            <select id="awareness-segment">
+                <option>
+                    Saver
+                </option>
+                <option>
+                    Savvy
+                </option>
+                <option>
+                    Enthusiast
+                </option>
+                <option>
+                    High Earner
+                </option>
+
+            </select> 
+            <input min="1" max="5" id="awareness-amount" type="number" placeholder="რაოდენობა">
+
+
+            <button onclick="addAwareness()" id="add-awareness">მარკეტინგის დამატება</button>
+       </div>
+       <div style="overflow: auto" id="awarenesses">
+
+       </div>
+
+    </br>
+    <h2>მახასიათებლების მარკეტინგი</h2>
+    <div  class="form">
+         <select id="characteristics-name">
+            <option>
+                Price
+            </option>
+            <option>
+                Comfort
+            </option>
+            <option>
+                Image and Status
+            </option>
+            <option>
+                Durability
+            </option>
+            <option>
+                Design
+            </option>
+            <option>
+                Additional Features
+            </option>
+            <option>
+                Economy
+            </option>
+
+        </select> 
+         <select id="characteristics-segment">
+             <option>
+                 Saver
+             </option>
+             <option>
+                 Savvy
+             </option>
+             <option>
+                 Enthusiast
+             </option>
+             <option>
+                 High Earner
+             </option>
+
+         </select> 
+         <input min="1" max="5" id="characteristics-value" type="number" placeholder="მახასიათებლის მნიშვნელობა">
+         <input min="1" max="5" id="characteristics-amount" type="number" placeholder="მარკეტინგის რაოდენობა">
+
+
+         <button onclick="addCharacteristicsMarketing()" id="add-char-marks">მარკეტინგის დამატება</button>
+    </div>
+    <div style="overflow: auto" id="char-marks">
+
+    </div>
+
+    <button onclick="runAwareness()" id="run-awareness">ცნობადობის მარკეტინგის გაშვება</button>
+    <button onclick="runCharMarks()" id="run-char-marks">მახასიათებლების მარკეტინგის გაშვება</button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button onclick="playTurn()" id="run-turn">ბაზრის სიმულაცია</button>
+    <div style="width:1000px">
+        <canvas id="salesChart"></canvas>
+
+       </div>
+
+    </div>
+    <div style="width:1000px">
+        <canvas id="totalSalesChart"></canvas>
+
+       </div>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="main2.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+</html>
